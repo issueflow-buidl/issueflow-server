@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth';
 import { User, Repository, Issue, Bounty } from './entities';
 
 @Module({
@@ -16,6 +17,7 @@ import { User, Repository, Issue, Bounty } from './entities';
       entities: [User, Repository, Issue, Bounty],
       synchronize: process.env.NODE_ENV !== 'production',
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
